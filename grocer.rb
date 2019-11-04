@@ -57,7 +57,7 @@ def consolidate_cart(cart)
   result
 end
 
-def apply_coupons(cart = [], coupons = [])
+def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
@@ -143,9 +143,6 @@ def checkout(cart, coupons)
   puts coupons
 
   cart = consolidate_cart(cart)
-
-
-
   cart = apply coupons(cart, coupons)
   cart = apply_clearance(cart)
 
