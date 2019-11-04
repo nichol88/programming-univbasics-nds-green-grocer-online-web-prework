@@ -69,9 +69,7 @@ def apply_coupons(cart, coupons)
 
   while coupon_index < coupons.length
     cur_coup = coupons[coupon_index]
-    if !cur_coup
-      break
-    end
+
         #puts "Current coupon: #{coupon_index}"
         #puts cur_coup
     applicable_item = find_item_by_name_in_collection(coupons[coupon_index][:item], cart)
@@ -136,6 +134,11 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
+  puts "CHECKING OUT"
+  puts "Cart:"
+  puts cart
+  puts "Coupons:"
+  puts coupons
 
   consolidate_cart(cart)
   apply coupons(cart, coupons)
