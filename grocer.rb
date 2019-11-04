@@ -70,12 +70,13 @@ def apply_coupons(cart, coupons)
   puts "Applying coupons..."
   while coupon_index < coupons.length
     cur_coup = coupons[coupon_index]
-
         #puts "Current coupon: #{coupon_index}"
         #puts cur_coup
-    applicable_item = find_item_by_name_in_collection(coupons[coupon_index][:item], cart)
+    applicable_item = find_item_by_name_in_collection(cur_coup[:item], cart)
         #puts "Applicable item?:"
         #puts applicable_item
+    couponed_item = find_item_by_name_in_collection("#{cur_coup[:item]} W/COUPON", cart)
+
     if applicable_item && applicable_item[:count] >= cur_coup[:num] # if coupon appllies to an item, do stuff
       # subtract coupon's :num from :count of applicable_item
       applicable_item[:count] = applicable_item[:count] - cur_coup[:num]
