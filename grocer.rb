@@ -23,6 +23,7 @@ def consolidate_cart(cart)
   # change `cart` (i.e. mutate) it. It's easier to return a new thing.
   count = 0
   result = []
+  puts "Consolidating cart..."
   while count < cart.length
     #puts count
     #puts "Searching for: " + cart[count][:item]
