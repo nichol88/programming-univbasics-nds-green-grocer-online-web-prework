@@ -152,6 +152,11 @@ def checkout(cart, coupons)
     total += line_total
     count += 1
   end
+
+  if total > 100.00
+    total = total * 0.8
+  end
+
   total
 
 end
