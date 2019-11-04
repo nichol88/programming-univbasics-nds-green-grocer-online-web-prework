@@ -85,7 +85,7 @@ def apply_coupons(cart, coupons)
     #  puts cart
       cart.push({
       :item => "#{cur_coup[:item]} W/COUPON",
-      :price => cur_coup[:cost],
+      :price => cur_coup[:cost] / cur_coup[:num],
       :clearance => applicable_item[:clearance],
       :count => cur_coup[:num]
       #:cost => cur_coup[:cost]
