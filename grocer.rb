@@ -53,6 +53,7 @@ def consolidate_cart(cart)
     end
     count += 1
   end
+  puts result
   result
 end
 
@@ -64,10 +65,9 @@ def apply_coupons(cart = [], coupons = [])
   #puts cart
   #puts "Input coupons::"
   #puts coupons
-
   # for each coupon, see if it applies
   coupon_index = 0
-
+  puts "Applying coupons..."
   while coupon_index < coupons.length
     cur_coup = coupons[coupon_index]
 
@@ -108,6 +108,7 @@ def apply_coupons(cart = [], coupons = [])
     end
     coupon_index += 1
   end
+  puts cart
   cart
 end
 
@@ -142,6 +143,9 @@ def checkout(cart, coupons)
   puts coupons
 
   cart = consolidate_cart(cart)
+
+
+
   cart = apply coupons(cart, coupons)
   cart = apply_clearance(cart)
 
