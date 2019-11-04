@@ -142,7 +142,7 @@ def checkout(cart, coupons)
   puts coupons
 
   cart = consolidate_cart(cart)
-  cart = apply coupons(cart, coupons)
+  #cart = apply coupons(cart, coupons)
   cart = apply_clearance(cart)
 
   count = 0
