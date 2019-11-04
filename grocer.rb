@@ -59,30 +59,30 @@ def apply_coupons(cart, coupons)
   # Consult README for inputs and outputs
   #
   # REMEMBER: This method **should** update cart
-  puts "Input cart::" #
-  puts cart
-  puts "Input coupons::"
-  puts coupons
+  #puts "Input cart::" #
+  #puts cart
+  #puts "Input coupons::"
+  #puts coupons
 
   # for each coupon, see if it applies
   coupon_index = 0
 
   while coupon_index < coupons.length
     cur_coup = coupons[coupon_index]
-    puts "Current coupon: #{coupon_index}"
-    puts cur_coup
+    #puts "Current coupon: #{coupon_index}"
+    #puts cur_coup
     applicable_item = find_item_by_name_in_collection(coupons[coupon_index][:item], cart)
-    puts "Applicable item?:"
-    puts applicable_item
+    #puts "Applicable item?:"
+    #puts applicable_item
     if applicable_item && applicable_item[:count] >= cur_coup[:num] # if coupon appllies to an item, do stuff
       # subtract coupon's :num from :count of applicable_item
       applicable_item[:count] = applicable_item[:count] - cur_coup[:num]
       # add couponed item to cart with appropriate keys
-      puts "applicable_item after subtracting couponed items:"
-      puts applicable_item
+    #  puts "applicable_item after subtracting couponed items:"
+    #  puts applicable_item
 
-      puts "Cart before adding couponed item"
-      puts cart
+    #  puts "Cart before adding couponed item"
+    #  puts cart
       cart.push({
       :item => "#{cur_coup[:item]} W/COUPON",
       :price => cur_coup[:cost],
@@ -91,8 +91,8 @@ def apply_coupons(cart, coupons)
       #:cost => cur_coup[:cost]
 
       })
-      puts "Cart AFTER adding couponed item"
-      puts cart
+    #  puts "Cart AFTER adding couponed item"
+    #  puts cart
 
       #if applicable_item[:count] == 0
       #  puts "Item count reduced to zero. removing #{applicable_item[:item]}"
@@ -102,7 +102,7 @@ def apply_coupons(cart, coupons)
       #end
 
     else
-      puts "Coupon does not apply to any items in cart."
+    #  puts "Coupon does not apply to any items in cart."
     end
     coupon_index += 1
   end
@@ -134,6 +134,17 @@ def checkout(cart, coupons)
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
 
+  consolidate_cart(cart)
+  apply coupons(cart, coupons)
+  apply_clearance(cart)
 
+  count = 0
+  total = 0
+  while count < cart.length
+    line_total = cart[count][:price] * cart[count][:count]
+    total += line_total
+    count += 1
+  end
+  total
 
 end
