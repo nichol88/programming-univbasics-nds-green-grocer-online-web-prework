@@ -141,9 +141,9 @@ def checkout(cart, coupons)
   puts "Coupons:"
   puts coupons
 
-  consolidate_cart(cart)
-  apply coupons(cart, coupons)
-  apply_clearance(cart)
+  cart = consolidate_cart(cart)
+  cart = apply coupons(cart, coupons)
+  cart = apply_clearance(cart)
 
   count = 0
   total = 0
