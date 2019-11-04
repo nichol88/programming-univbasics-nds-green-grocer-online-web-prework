@@ -69,20 +69,23 @@ def apply_coupons(cart, coupons)
 
   while coupon_index < coupons.length
     cur_coup = coupons[coupon_index]
-    #puts "Current coupon: #{coupon_index}"
-    #puts cur_coup
+    if !cur_coup
+      break
+    end
+        #puts "Current coupon: #{coupon_index}"
+        #puts cur_coup
     applicable_item = find_item_by_name_in_collection(coupons[coupon_index][:item], cart)
-    #puts "Applicable item?:"
-    #puts applicable_item
+        #puts "Applicable item?:"
+        #puts applicable_item
     if applicable_item && applicable_item[:count] >= cur_coup[:num] # if coupon appllies to an item, do stuff
       # subtract coupon's :num from :count of applicable_item
       applicable_item[:count] = applicable_item[:count] - cur_coup[:num]
       # add couponed item to cart with appropriate keys
-    #  puts "applicable_item after subtracting couponed items:"
-    #  puts applicable_item
+        #  puts "applicable_item after subtracting couponed items:"
+        #  puts applicable_item
 
-    #  puts "Cart before adding couponed item"
-    #  puts cart
+        #  puts "Cart before adding couponed item"
+        #  puts cart
       cart.push({
       :item => "#{cur_coup[:item]} W/COUPON",
       :price => cur_coup[:cost] / cur_coup[:num],
