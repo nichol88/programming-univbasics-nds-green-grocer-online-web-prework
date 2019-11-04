@@ -94,7 +94,7 @@ def apply_coupons(cart, coupons)
       puts "Cart AFTER adding couponed item"
       puts cart
 
-      if applicable_item[:count] == 0
+      #if applicable_item[:count] == 0
         puts "Item count reduced to zero. removing #{applicable_item[:item]}"
         cart.delete(applicable_item)
         puts
