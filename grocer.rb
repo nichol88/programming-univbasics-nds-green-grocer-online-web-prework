@@ -82,9 +82,19 @@ def apply_coupons(cart, coupons)
       #if coupon has been added alread
       if couponed_item
         couponed_item[:count] += cur_coup[:num]
+        applicable_item -= cur_coup[:num]
+      else
+        couponed_item = {
+        :item => "#{cur_coup[:item]} W/COUPON",
+        :price => cur_coup[:cost] / cur_coup[:num],
+        :clearance => applicable_item[:clearance],
+        :count => cur_coup[:num]
+      }
+      cart << couponed_item
+      applicable_item[:count] -= cur_coup[:num]
       end
 
-      applicable_item[:count] = applicable_item[:count] - cur_coup[:num]
+
       # add couponed item to cart with appropriate keys
         #  puts "applicable_item after subtracting couponed items:"
         #  puts applicable_item
