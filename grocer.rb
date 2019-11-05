@@ -101,14 +101,7 @@ def apply_coupons(cart, coupons)
 
         #  puts "Cart before adding couponed item"
         #  puts cart
-      cart.push({
-      :item => "#{cur_coup[:item]} W/COUPON",
-      :price => cur_coup[:cost] / cur_coup[:num],
-      :clearance => applicable_item[:clearance],
-      :count => cur_coup[:num]
-      #:cost => cur_coup[:cost]
 
-      })
     #  puts "Cart AFTER adding couponed item"
     #  puts cart
 
@@ -118,8 +111,6 @@ def apply_coupons(cart, coupons)
       #  puts
       #  puts cart
       #end
-
-    else
     #  puts "Coupon does not apply to any items in cart."
     end
     coupon_index += 1
