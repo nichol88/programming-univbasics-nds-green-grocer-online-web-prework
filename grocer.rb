@@ -79,6 +79,11 @@ def apply_coupons(cart, coupons)
 
     if applicable_item && applicable_item[:count] >= cur_coup[:num] # if coupon appllies to an item, do stuff
       # subtract coupon's :num from :count of applicable_item
+      #if coupon has been added alread
+      if couponed_item
+        couponed_item[:count] += cur_coup[:num]
+      end
+
       applicable_item[:count] = applicable_item[:count] - cur_coup[:num]
       # add couponed item to cart with appropriate keys
         #  puts "applicable_item after subtracting couponed items:"
